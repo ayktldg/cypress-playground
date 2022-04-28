@@ -15,7 +15,7 @@ describe("Categories", () => {
      * Sometimes you want to isolate a part of the page for your queries and assertions.
      * To do that you can use the `within` command that will do whatever callback function you give inside of that element.
      */
-    cy.get('[data-testid="categories-list"]').within(() => {
+    cy.get('[data-testid="categories-list"]', { timeout: 20000 }).within(() => {
       // Let's first check that there are 4 categories!
       cy.get('[data-testid="category-item"]').should("have.length", 4);
 
@@ -25,7 +25,7 @@ describe("Categories", () => {
   });
 
   it("Selecting a category should filter the list", () => {
-    cy.get('[data-testid="categories-list"]').within(() => {
+    cy.get('[data-testid="categories-list"]', { timeout: 20000 }).within(() => {
       // Check that none are selected
       cy.get('[data-selected="false"]').should("have.length", 4);
     });
